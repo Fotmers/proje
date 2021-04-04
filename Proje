@@ -59,15 +59,18 @@ void loop()
   int sicaklik = 40;
   int t = dht.readTemperature();
   
-  t = dht.readTemperature();
-    powerOnRelay();
-    Serial.println(t);
+  
       if(t >= sicaklik)
       {
         Serial.print("sicak");
         powerOffRelay();
         Serial.println(t);
         delay(60000);
+      }
+      else if(t <= sicaklik){
+        t = dht.readTemperature();
+        powerOnRelay();
+        Serial.println(t);
       }
       
   
